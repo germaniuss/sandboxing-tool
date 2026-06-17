@@ -1,0 +1,15 @@
+[package]
+name = "sandbox"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cap-std = "4.0.2"
+bitflags = "2.3.3"
+nix = { workspace = true }
+bon = { workspace = true }
+serde = { workspace = true }
+
+[dev-dependencies]
+rstest = "0.26.1"
+fastrand = "2.4.1"

@@ -1,0 +1,42 @@
+[package]
+name = "sandboxing-tool"
+version = "0.1.0"
+edition = "2024"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+
+[workspace]
+resolver = "2"
+members = [
+    ".",
+    "crates/systemd-bus",
+    "crates/sandbox",
+]
+
+[workspace.dependencies]
+zbus = { version = "5.15", features = ["tokio"], default-features = false }
+nix = { version = "0.31.3", features = ["mount", "process", "sched", "fs", "user", "term", "signal", "poll", "event"] }
+serde = { version = "1", features = ["derive"] }
+futures-lite = "2.6.1"
+bon = { version = "3.9.0", features = ["experimental-overwritable"]}
+
+[dependencies]
+systemd-bus = { path = "crates/systemd-bus" }
+sandbox = { path = "crates/sandbox" }
+futures-lite = { workspace = true }
+zbus = { workspace = true }
+nix = { workspace = true }
+serde = { workspace = true }
+tokio = { version = "1.52.3", features = ["rt", "signal", "macros"]}
+rustix = { version = "1.1.4", default-features = false, features = ["process", "fs", "mount", "thread"]}
+conf = "0.4.5"
+clap = { version = "4.5.60", features = ["derive"] }
+figment = { version = "0.10.19", features = ["toml"] }
+toml = "1.0.3"
+fastrand = "2.4.1"
+
+[patch.crates-io]
+zbus = { path = "../zbus/zbus" }

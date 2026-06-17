@@ -1,0 +1,18 @@
+# wait = true
+
+[[binds]]
+source = "/usr"
+target = "/usr"
+
+[[symlinks]]
+source = "/usr/lib64"
+target = "/lib64"
+
+# [stdio]
+# stdin = "std.in"
+# stdout = "std.out"
+# stderr = "std.err"
+
+# [resources]
+# memory = "10M"
+# cpus = 1.0
