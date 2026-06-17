@@ -12,14 +12,14 @@ pub use sandbox::*;
 #[cfg(test)]
 mod tests {
 
-    use std::time::Duration;
+    // use std::time::Duration;
 
     use super::*;
     use rstest::*;
 
     use nix::{
         mount::{MsFlags, mount},
-        unistd::{Gid, Pid, Uid, getpid},
+        unistd::{Gid, Pid, Uid},
     };
 
     fn inode(name: &str) -> std::io::Result<String> {
@@ -27,9 +27,9 @@ mod tests {
         std::fs::read_link(path).map(|path| path.to_string_lossy().into_owned())
     }
 
-    fn ms(ms: u32) -> Duration {
-        Duration::from_millis(ms.into())
-    }
+    // fn ms(ms: u32) -> Duration {
+    //     Duration::from_millis(ms.into())
+    // }
 
     #[fixture]
     fn tmpdir() -> std::path::PathBuf {
